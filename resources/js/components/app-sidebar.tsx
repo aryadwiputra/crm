@@ -5,7 +5,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, SettingsIcon, type LucideIcon } from 'lucide-react'; // Import LucideIcon
+import { BookOpen, Folder, LayoutGrid, SettingsIcon, UserRound, type LucideIcon } from 'lucide-react'; // Import LucideIcon
 
 import AppLogo from './app-logo';
 
@@ -25,6 +25,12 @@ const mainNavItems: MainNavItem[] = [
         title: 'Dashboard',
         url: '/dashboard',
         icon: LayoutGrid,
+        // isActive: false, // Hapus atau biarkan false
+    },
+    {
+        title: 'Customers',
+        url: 'admin/customers',
+        icon: UserRound,
         // isActive: false, // Hapus atau biarkan false
     },
     {
