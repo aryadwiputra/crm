@@ -15,4 +15,27 @@ class CustomerController extends Controller
 
         return Inertia::render("admin/customers/index", compact("customers"));
     }
+
+    public function create()
+    {
+        return Inertia::render("admin/customers/create");
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "vat_number" => "nullable",
+            "phone" => "required",
+            "website" => "nullable",
+            "address" => "required",
+            "city" => "nullable",
+            "provence" => "nullable",
+            "zip_code" => "nullable",
+        ]);
+
+        Customer::create($request->all());
+
+        return to_route("admin.customers.index")->with("success", "Customer created successfully");
+    }
 }
