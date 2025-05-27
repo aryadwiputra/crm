@@ -11,7 +11,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::orderBy("created_at", "desc")->paginate(10);
+        $customers = Customer::all();
 
         return Inertia::render("admin/customers/index", compact("customers"));
     }
@@ -37,5 +37,12 @@ class CustomerController extends Controller
         Customer::create($request->all());
 
         return to_route("admin.customers.index")->with("success", "Customer created successfully");
+    }
+
+
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+        return redirect()->back()->with('success', 'Customer deleted successfully.');
     }
 }
